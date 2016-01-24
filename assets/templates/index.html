@@ -1,0 +1,115 @@
+<div class="container">
+    <div class="row m-t-3">
+        <div class="col-xs-12">
+            <progress class="progress"
+                      ng-class="{'invisible' : !photo.progress && !form.submitted, 'progress-success' : photo.progress == 100}"
+                      value="{{ photo.progress }}"
+                      max="100">{{ photo.progress }}
+            </progress>
+
+            <form class="card">
+                <div class="media">
+                    <div class="media-left media-middle">
+                        <div class="media-object media-box text-xs-center"
+                             ngf-drop ngf-select
+                             ng-model="photo.image"
+                             ngf-pattern="'image/*'"
+                             ngf-accept="'image/*'"
+
+                             ng-model-rejected="rejFiles"
+                             ngf-drag-over-class="{accept:'drag-success', reject:'drag-danger'}"
+                             ngf-multiple="false"
+                             ngf-allow-dir="false"
+                             ngf-accept="'image/*'"
+                             ngf-drop-available="dropAvailable"
+                             ng-class="{'media-box-success': photo.image, 'media-box-danger': !photo.image && form.submitted}">
+
+                            <div class="m-t-1 m-x-2">
+                                <i class="fa fa-file-image-o fa-3x"
+                                   ng-if="!photo.image && !form.submitted"></i>
+                                <i class="fa fa-times fa-3x"
+                                   ng-if="!photo.image && form.submitted"></i>
+                                <i class="fa fa-check fa-3x"
+                                   ng-if="photo.image"></i>
+                            </div>
+
+                            <small>Drag & drop</small>
+
+                        </div>
+                    </div>
+                    <div class="media-body media-middle" style="width: 100%;">
+
+                        <div
+                             ng-class="{'has-success': photo.name, 'has-danger': !photo.name && form.submitted}">
+                            <input type="text"
+                                   class="form-control"
+                                   placeholder="Image name"
+                                   ng-model="photo.name">
+                        </div>
+                    </div>
+
+                    <div class="media-right media-middle">
+                        <button type="button"
+                                class="m-r-1 btn btn-primary"
+                                ng-click="upload(photo)">
+                            <i class="fa fa-upload"> Upload</i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+            <div class="card"
+                 ng-repeat="photo in photos">
+                <div class="media">
+                    <div class="media-left">
+                        <img class="media-object media-img"
+                             ng-src="{{ photo.url }}" alt="{{ photo.name }}">
+                    </div>
+                    <div class="media-body media-middle">
+                        <div ng-if="!photo.editable">
+                            <h3 class="media-heading">{{ photo.name }}</h3>
+                            <p>
+                                {{ photo.createdAt | date: 'shortTime' }} on
+                                {{ photo.createdAt | date: 'longDate' }},
+                                {{ photo.format }}
+                            </p>
+                        </div>
+
+                        <input type="text"
+                               class="form-control"
+                               placeholder="Image name"
+                               ng-model="newPhoto.name"
+                               ng-if="photo.editable">
+                    </div>
+
+                    <div class="media-right media-middle"
+                         ng-if="!photo.editable">
+                        <button type="button"
+                                class="btn btn-primary-outline media-object"
+                                ng-click="edit(photo, $index)">
+                            <i class="fa fa-pencil"></i>
+                        </button>
+                    </div>
+
+                    <div class="media-right media-middle"
+                         ng-if="!photo.editable">
+                        <button type="button"
+                                class="m-r-1 btn btn-danger-outline media-object"
+                                ng-click="delete(photo, $index)">
+                            <i class="fa fa-trash"></i>
+                        </button>
+                    </div>
+
+                    <div class="media-right media-middle"
+                         ng-if="photo.editable">
+                        <button type="button"
+                                class="m-r-1 btn btn-primary-outline media-object"
+                                ng-click="update(photo, newPhoto, $index)">
+                            <i class="fa fa-pencil"> Update</i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

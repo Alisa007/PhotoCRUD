@@ -1,0 +1,45 @@
+.media-box {
+    border: 5px dashed black;
+    height: 100px;
+    width: 100px;
+    margin: 25px;
+    border-radius: 5px;
+}
+
+.media-box-success {
+    border-color: green;
+    color: green;
+}
+
+.media-box-danger {
+    border-color: red;
+    color: red;
+}
+
+.media-img {
+    height: 100%;
+    max-height: 150px;
+    width: auto;
+}
+
+.card {
+    height: 150px;
+}
+
+.dragover-success {
+    border-color: green;
+    color: green;
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+.visible {
+    visibility: visible;
+}
+
+.card .media-left img {
+    border-top-left-radius:  5px;
+    border-bottom-left-radius:  5px;
+}
