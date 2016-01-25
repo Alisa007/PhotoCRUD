@@ -28,6 +28,16 @@ angular.module('app', [
         $scope.photo = {};
         $scope.form = {};
 
+        $scope.$watch('file', function () {
+            if (file) {
+                $scope.fileValidation = "media-box-success";
+            } else if (!file && $scope.form.submitted) {
+                $scope.fileValidation = "media-box-danger";
+            } else if (!file && !$scope.form.submitted) {
+                $scope.fileValidation = ""
+            }
+        });
+
         Photos.query({
             sort: 'createdAt desc'
         }).$promise.then(
@@ -35,7 +45,7 @@ angular.module('app', [
                 $scope.photos = data;
             });
 
-        $scope.upload = function (photo) {
+        $scope.upload = function (photo, file) {
             $scope.form.submitted = true;
 
             if (file && photo.name) {

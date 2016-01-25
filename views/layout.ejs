@@ -49,15 +49,15 @@
                              ngf-multiple="false"
                              ngf-allow-dir="false"
 
-                             ng-class="{'media-box-success': file, 'media-box-danger': !file && form.submitted}">
+                             ng-class="fileValidation">
 
                             <div class="m-t-1 m-x-2">
                                 <i class="fa fa-file-image-o fa-3x"
-                                   ng-if="!file && !form.submitted"></i>
+                                   ng-if="fileValidation == ''"></i>
                                 <i class="fa fa-times fa-3x"
-                                   ng-if="!file && form.submitted"></i>
+                                   ng-if="fileValidation == 'media-box-danger'"></i>
                                 <i class="fa fa-check fa-3x"
-                                   ng-if="file"></i>
+                                   ng-if="fileValidation == 'media-box-success'"></i>
                             </div>
 
                             <small>Drag & drop</small>
