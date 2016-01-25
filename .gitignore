@@ -39,12 +39,6 @@
 # 
 ################################################
 
-config/local.js
-
-
-
-
-
 ################################################
 # Dependencies
 #
@@ -116,3 +110,4 @@ npm-debug.log
 nbproject
 .idea
 .node_history
+.sailsrc
