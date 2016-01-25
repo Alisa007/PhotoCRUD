@@ -51,7 +51,7 @@ angular.module('app', [
             if (file && photo.name) {
                 Upload.upload({
                     url: '/createPhoto',
-                    file: photo.image,
+                    file: file,
                     data: {
                         name: photo.name
                     }
