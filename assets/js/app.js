@@ -29,11 +29,11 @@ angular.module('app', [
         $scope.form = {};
 
         $scope.$watch('file', function () {
-            if (file) {
+            if ($scope.file) {
                 $scope.fileValidation = "media-box-success";
-            } else if (!file && $scope.form.submitted) {
+            } else if (!$scope.file && $scope.form.submitted) {
                 $scope.fileValidation = "media-box-danger";
-            } else if (!file && !$scope.form.submitted) {
+            } else if (!$scope.file && !$scope.form.submitted) {
                 $scope.fileValidation = ""
             }
         });
