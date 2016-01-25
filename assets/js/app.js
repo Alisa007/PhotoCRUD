@@ -38,7 +38,7 @@ angular.module('app', [
         $scope.upload = function (photo) {
             $scope.form.submitted = true;
 
-            if (photo.image && photo.name) {
+            if ($scope.file && photo.name) {
                 Upload.upload({
                     url: '/createPhoto',
                     file: photo.image,
